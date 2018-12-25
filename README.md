@@ -235,8 +235,7 @@ if (module.hot) {
 #### 实现热更新
 修改components/app下的无论是同步import还是异步require.ensure的模块,浏览器会在不刷新页面的前提下实现更新(由于样式文件被提取后热更新会失败,开发时统一设置不提取,即本文档提到的VEXTRACT环境变量)
 
-#### 无论服务端还是客户端渲染,顶层组件(App)都带有一个data的props
-![image](http://img.xmiles.cn/frontend_service/youdao/QQ20170306-103923@2x.png)
+#### 无论服务端还是客户端渲染,顶层组件(App)都带有一个data的props __INITIAL_STATE__
 
 为了方便,在模块App中将其放置到一个可供其他模块访问的对象中
 
