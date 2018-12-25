@@ -4,7 +4,7 @@
 
 # 本地启动
 1. git clone prj
-2. npm i
+2. npm i  (**目前请使用 node v8.9.x 以上版本，但不要超过v8**)
 3. vscode f5
 4. browser http://localhost:3000/prj/common?page=test
 
