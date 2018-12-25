@@ -2,8 +2,11 @@
 - 这是一个多页面react+express+webpack项目，因为是2018圣诞节整理的，所以ico使用了阿里图标库的圣诞老人。
 - 接下来可能会持续优化更新该项目。
 
-# vscode启动测试-访问地址
-http://localhost:3000/prj/common?page=test
+# 本地启动
+1. git clone prj
+2. npm i
+3. vscode f5
+4. browser http://localhost:3000/prj/common?page=test
 
 # TODO
 - 分离page，优化node层结构
