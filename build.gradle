@@ -1,0 +1,79 @@
+apply plugin: "org.hidetake.ssh"
+
+ext {
+    ISOFFICIAL = "$isOfficial"
+    if (ISOFFICIAL.contains("false")) {
+        //配置测试服务器
+        remotes {
+            server {
+                host = '127.0.0.1'
+                user = 'xxx'
+                password = 'xxxxxx'
+                keepAliveSec = 30
+                knownHosts = allowAnyHosts
+            }
+        }
+    } else {
+        //配置正式服务器
+        remotes {
+            server {
+                host = '127.0.0.1'
+                user = 'xxx'
+                password = 'xxxxxx'
+                keepAliveSec = 30
+                knownHosts = allowAnyHosts
+            }
+        }
+    }
+    execStepTest = [
+       'cd /data/node/frontend/'
+       , 'unzip -o -q frontend.zip'
+       , 'npm i'
+       , 'export START_PORT=13363&&pm2 restart start.config.js --env dev'
+    ]
+    execStepOfficial = [
+        'source /etc/profile',
+        'cp -rf /data/node/frontend_13363/frontend.zip /data/node/frontend_13364/',
+        'cd /data/node/frontend_13363/ ',
+        'pm2 stop frontend_13363 ',
+        'unzip -o -q frontend.zip ',
+        'npm i ',
+        'export START_PORT=13363 && pm2 restart start.config.js ',
+        'sleep 5 ',
+        'cd /data/node/frontend_13364/ ',
+        'pm2 stop frontend_13364 ',
+        'unzip -o -q frontend.zip ',
+        'npm i ',
+        'export START_PORT=13364 && pm2 restart start.config.js '
+    ]
+}
+
+buildscript {
+    repositories {
+        maven {
+            url 'https://plugins.gradle.org/m2/'
+        }
+    }
+    dependencies {
+        classpath 'org.hidetake:gradle-ssh-plugin:1.1.3'
+    }
+}
+
+task deployTest() << {
+	ssh.run {
+        session(remotes.server) {
+            execute (execStepTest.join(' && '), pty: true)
+            println("================操作成功================")
+        }
+    }
+}
+
+task deployOfficial() << {
+	ssh.run {
+        session(remotes.server) {
+            // execute "bash /data/node/deploy.sh"
+            execute (execStepOfficial.join(' && '), pty: true)
+            println("================操作成功================")
+        }
+    }
+}

@@ -1,0 +1,81 @@
+<html>
+<head>
+<title>页面出错了</title>
+<% include('./common/header') %>
+<style>
+    .error-container {
+        display: none;
+    }
+    .container{
+        text-align: center;
+        margin-top: 20%;
+        font-size: 0.875em;
+        line-height: 1.625;
+    }
+    .container img{
+        width: 80px;
+        height: 80px;
+        margin-top: 54px;
+    }
+    .container .title {
+        font-size: 1rem;
+        color: #98989e;
+        margin-top: 8px;
+    }
+    .container .detial {
+        font-size: .92rem;
+        color: #c4c6cb;
+        margin-top: 8px;
+    }
+    .reload {
+        width: 120px;
+        font-size: 1rem;
+        color: white;
+        background: #FF4338;
+        border-radius: 2px;
+        padding: 10px;
+        margin: 30px auto 10px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.20);
+    }
+    .more {
+        font-size: .8rem;
+        color: #98989e;
+    }
+</style>
+</head>
+<body>
+    <div class="container">
+        <img src="//img.xmiles.cn/qu/common/network_error.png"/>
+        <p class="title">出了一个小问题</p>
+        <p class="detial">我们正在努力修复...</p>
+        <p class="reload" id="reload">刷新</p>
+        <p class="more" id="more">查看更多</p>
+    </div>
+    
+    <div class="error-container" id="error-container">
+        <h2 id="message"><%=message%></h2>
+        <p id="error"><%=error%></p>
+    </div>
+</body>
+<% include('./common/footer') %>
+<script>
+    document.getElementById('more').onclick = function(e) {
+        document.getElementById('error-container').style.display = 'block';
+    };
+    document.getElementById('reload').onclick = function (e) {
+        var method = 'reload';
+        var args = '{}';
+        if (window._dswk) {
+            prompt(window._dswk + method, args);
+        } else {
+            if (typeof _dsbridge == 'function') {
+                _dsbridge(method, args);
+            } else if (window._dsbridge) {
+                _dsbridge.call(method, args);
+            } else {
+                location.replace(window.location.href);                
+            }
+        }
+    };
+</script>
+</html>

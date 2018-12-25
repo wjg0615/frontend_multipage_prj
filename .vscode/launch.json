@@ -1,0 +1,108 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        
+        {
+            "name": "启动测试",
+            "type": "node",
+            "request": "launch",
+            "program": "${workspaceRoot}/bin/www",
+            "stopOnEntry": false,
+            "args": [],
+            "cwd": "${workspaceRoot}",
+            "preLaunchTask": null,
+            "runtimeExecutable": null,
+            "runtimeArgs": [
+                "--nolazy",
+                "--harmony",
+                "--require",
+                "babel-register"
+            ],
+            "env": {
+                "NODE_ENV": "development", //环境参数，当前指定为生产环境--production/development
+                "PORT"    : "3000",
+                "SERV_ENV": "test", //official/test
+                "IS_LOCAL": "1",
+                "VNAME": "fanli",
+                "VDEPLOY": "0",
+                "VCLEAN": "0",
+                "VEXTRACT": "0",
+                "VFILTER": ""
+            },
+            "console": "internalConsole",
+            "sourceMaps": true,
+            "outFiles": ["${workspaceRoot}/app/**/*.js"]
+        },
+        {
+            "name": "启动正式",
+            "type": "node",
+            "request": "launch",
+            "program": "${workspaceRoot}/bin/www",
+            "stopOnEntry": false,
+            "args": [],
+            "cwd": "${workspaceRoot}",
+            "preLaunchTask": null,
+            "runtimeExecutable": null, //"${workspaceRoot}/node_modules/.bin/babel-node",
+            "runtimeArgs": [
+                "--harmony"
+            ],
+            "env": {
+                "NODE_ENV": "production", //环境参数，当前指定为生产环境--production/development
+                "PORT"    : "3000",
+                "SERV_ENV": "test"
+            },
+            "console": "internalConsole",
+            "sourceMaps": false,
+            "outFiles": []
+        },
+        {
+            "name": "附加",
+            "type": "node",
+            "request": "attach",
+            "port": 5858,
+            "address": "localhost",
+            "restart": false,
+            "sourceMaps": false,
+            "outFiles": [],
+            "localRoot": "${workspaceRoot}",
+            "remoteRoot": null
+        },
+        {
+            "name": "附加到进程",
+            "type": "node",
+            "request": "attach",
+            "processId": "${command.PickProcess}",
+            "port": 5858,
+            "sourceMaps": false,
+            "outFiles": []
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Mocha Tests",
+            "cwd": "${workspaceRoot}",
+            "runtimeExecutable": "/Users/xmiles/.nvm/versions/node/v7.1.0/lib/node_modules/mocha/bin/mocha",
+            "windows": {
+                "runtimeExecutable": "${workspaceRoot}/node_modules/.bin/mocha.cmd"
+            },
+            "runtimeArgs": [
+                "-u",
+                "bdd",
+                "--timeout",
+                "20000",
+                "--colors",
+                "--bail",
+                "--recursive",
+                "--compilers",
+                "js:babel-register",
+                "${workspaceRoot}/app/test/**/*.test.@(js|jsx)"
+            ],
+            "env": {
+                "NODE_ENV": "production", //环境参数，当前指定为生产环境--production/development
+                "SERV_ENV": "test",
+                "IS_LOCAL": "1"
+            },
+            "internalConsoleOptions": "openOnSessionStart"
+        }
+    ]
+}

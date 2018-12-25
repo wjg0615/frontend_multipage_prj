@@ -1,0 +1,49 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: PingFang SC;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+:focus {
+    outline: none;
+}
+
+.clear-margin--top::before {
+    content: "";
+    display: table;
+}
+
+.clear-margin--bottom::after {
+    content: "";
+    display: table;
+}
+
+.clearfix::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+@font-face {
+    font-family: 'DINAlternate-Bold';
+    src: url('./../../../../../common/modules/fonts/DIN Alternate Bold.ttf') format('truetype'), /* Safari, Android, iOS */
+    url('./../../../../../common/modules/fonts/DIN Alternate Bold.woff') format('woff'), /* Modern Browsers */
+    url('./../../../../../common/modules/fonts/DIN Alternate Bold.eot') format('embedded-opentype'), /* IE6-IE8 */
+    url('./../../../../../common/modules/fonts/DIN Alternate Bold.svg') format('svg');
+    /* Legacy iOS */
+}
+
+/* page */
+
+body {
+    background: #f6f6f6;
+}

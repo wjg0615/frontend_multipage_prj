@@ -1,0 +1,12 @@
+{
+    "taskStep": "Task Step",
+    "instruction": "Instruction",
+    "instructionContent": "<h5>1. Download the App From Google Play.</h5><h5>2.Try to play thay app for a few minutes.</h5><h5>3.Get rewards</h5>",
+    "instructionContentOpen": "<h5>(Only <span id=\"appname\"></span> new user can get rewards. Application will be opened automatically after install)</h5>",
+    "instructionContentTerminating": "<h5>(Task will be terminated after 10days)</h5>",
+    "done": "Done",
+    "theUseOfCoins": "The use of coins",
+    "netErrorText": "NET ERROR",
+    "netErrorBtnText": "REFRESH",
+    "errorToast": "Net error, please try later"
+}
