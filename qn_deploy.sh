@@ -24,7 +24,7 @@ else
 fi
 
 echo '前端代码转译'
-export VNAME=fanli&&export VFILTER=$1&&export VDEPLOY=1&&export VCLEAN=1&&export VEXTRACT=1&&npm run deploy-page
+export VNAME=fanli&&export VDEPLOY=1&&export VCLEAN=1&&export VEXTRACT=1&&npm run deploy-page
 if [ $? -ne 0 ]; then
     echo '前端代码转译 失败'
     exit 1

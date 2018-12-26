@@ -20,14 +20,13 @@
             ],
             "env": {
                 "NODE_ENV": "development", //环境参数，当前指定为生产环境--production/development
-                "PORT"    : "3000",
+                "PORT"    : "3001",
                 "SERV_ENV": "test", //official/test
                 "IS_LOCAL": "1",
-                "VNAME": "fanli",
+                "VNAME": "develop", //自定义可在开发时添加
                 "VDEPLOY": "0",
                 "VCLEAN": "0",
-                "VEXTRACT": "0",
-                "VFILTER": ""
+                "VEXTRACT": "0"
             },
             "console": "internalConsole",
             "sourceMaps": true,

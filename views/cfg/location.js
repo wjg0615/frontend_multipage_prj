@@ -2,7 +2,7 @@ import path from 'path';
 import projectsPath from './path';
 
 //相关的文件(夹))位置设置
-export default function getLocation(name, filter = '') {
+export default function getLocation(name) {
     let currentProject = 'fanli/',
         publicPath = '/qn/views/fanli/bundle/',
         pagesPath = {},
@@ -14,13 +14,15 @@ export default function getLocation(name, filter = '') {
                 'test/home'
             ];
             break;
+        case 'develop':
+            pagesPath = [
+                'test/home'
+            ];
+            break;
         default:
             break;
     }
     pagesPath.map((value) => {
-        if (value.indexOf(filter) == -1) {
-            return;
-        }
         var name = value.replace(/[\/-](\w)/g, function($0, $1) {
             return $1.toUpperCase();
         });
